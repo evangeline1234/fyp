@@ -25,12 +25,16 @@ SECRET_KEY = 'django-insecure-4xoa)h80d9vx*!#$4tdvw@2ps9#1!8lax5(vc_dmn#-nig(g-g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1', 
+    '640c-42-60-161-76.ngrok-free.app'
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'user',
     'carpark',
+    'prediction'
 ]
 
 REST_FRAMEWORK = {
@@ -51,6 +56,7 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -145,3 +151,5 @@ CELERY_BEAT_SCHEDULE = {
         'schedule': 600.0,  # 10 minutes
     },
 }
+
+CORS_ALLOW_ALL_ORIGINS = True
